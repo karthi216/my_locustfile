@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 2 * * *' # Every day at 2 AM
+    - cron: '0 2 * * *'  # Every day at 2 AM
   workflow_dispatch:
 
 jobs:
@@ -27,11 +27,4 @@ jobs:
 
       - name: Run Locust stress test
         run: |
-          locust -f locustfile.py --headless -u 100 -r 10 -t 2m --host https://example.com
-          --csv=locust_report
-     - name: upload csv reports 
-       uses: actions/upload-artifact@v4
-       with:
-        name: locust-csv-report
-        path: 
-            locust_report_*.csv                         
+          locust -f locustfile.py --headless -u 100 -r 10 -t 2m --host https://example.com                     
